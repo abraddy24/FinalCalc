@@ -1,0 +1,1 @@
+console.log("This is the test file that has loaded in the main.js file");

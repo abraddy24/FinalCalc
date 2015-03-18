@@ -16,7 +16,7 @@ require.config({
 });
 
 // All other modules should be called through here
-require(["jquery"],
+require(["jquery", "test"],
 function($, mixin, structures) {
    // mixin
    $(function() {
