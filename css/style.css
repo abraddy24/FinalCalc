@@ -1,1 +1,60 @@
-//file used for style in the calculator
+//css style sheet for calculator
+    #calculator{
+        border: 1px solid;
+        width: 300px;
+        overflow: auto; 
+        background: #5f5a5a;   
+    }
+    .io-field{
+        border: 1px solid;
+        height: 52x;
+        margin: 5px;
+        padding: 2px;
+        text-align: right;
+        overflow: hidden;
+        position: relative;
+        background: #fff;
+    }
+    .calculation, .collapsed-calculaion {
+        font-size: 10px;
+        height: 14px;
+        line-height: 14px;
+    }
+    .input{
+        font-size: 16px;
+        height: 24px;
+        line-height: 24px;
+    }
+    .numbers{
+        margin: 5px;
+        width: 120px;
+        float: left;
+    }
+    .operations{
+        margin: 5px;
+        width: 160px;
+        float: left;
+    }
+    .button{
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        font-size: 14px;
+        line-height: 30px;
+        text-align: center;
+        border: 1px solid;
+        cursor: pointer;
+        float: left;
+        margin: 4px;
+        background: #5ae9d1;
+    }
+    .button.number-0{
+        width: 70px;
+    }
+    .memory-indicator{
+        position: absolute;
+        bottom: 10px;
+        left: 2px;
+        font-size: 10px;
+    }
+
