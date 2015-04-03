@@ -9,16 +9,15 @@ var Calculator = (function() {
 			name: "context",
 			operation: function(a){
 				return a;
-			}
-			
-		}
+			}	
+		},
 		add: {
 			precednce: 1,
 			name: "add",
 			operation: function(a,b) {
 				return a + b;
 			},
-			button: "+";
+			button: "+"
 		},
 		subtract: {
 			precedence: 1,
@@ -26,7 +25,7 @@ var Calculator = (function() {
 			operation: function(a,b){
 				return a - b;
 			},
-			button: "-";
+			button: "-"
 		},
 		multiply: {
 			precedence: 2,
@@ -34,7 +33,7 @@ var Calculator = (function() {
 			operation: function(a,b){
 				return a * b;
 			},
-			button: "*";
+			button: "*"
 		},
 		divide: {
 			precedence: 2,
@@ -42,7 +41,7 @@ var Calculator = (function() {
 			operation: function(a,b){
 				return a / b;
 			},
-			button: "/";
+			button: "/"
 		},
 		square: {
 			precedence: 4,
@@ -51,7 +50,7 @@ var Calculator = (function() {
 			operation: function(a){
 				return Math.pow(a,2);
 			},
-			button: "x<sup>2</sup>";
+			button: "x<sup>2</sup>"
 		},
 		squareRoot: {
 			precedence: 4,
@@ -60,7 +59,7 @@ var Calculator = (function() {
 			operation: function(a){
 				return Math.sqrt(a);
 			},
-			button: "&#8730";
+			button: "&#8730"
 		},
 		power: {
 			precedence: 3,
@@ -71,7 +70,7 @@ var Calculator = (function() {
 			isInvalidInput: function(a,b){
 				return isNan(Math.pow(a,b)) ? "complex number" : false;
 			},
-			button: "x<sup>y</sup>";
+			button: "x<sup>y</sup>"
 		},
 		sin: {
 			precedence: 4,
@@ -80,7 +79,7 @@ var Calculator = (function() {
 			operation: function(a){
 				return Math.sin(a);
 			},
-			button: "sin(x)";
+			button: "sin(x)"
 		},
 		cos: {
 			precedence: 4,
@@ -89,7 +88,7 @@ var Calculator = (function() {
 			operation: function(a){
 				return Math.cos(a);
 			},
-			button: "cos(x)";
+			button: "cos(x)"
 		},
 		tan: {
 			precedence: 4,
@@ -98,11 +97,11 @@ var Calculator = (function() {
 			operation: function(a){
 				return Math.tan(a);
 			},
-			button: "tan(x)";
+			button: "tan(x)"
 		}
 	}
 
-	var Operation = functino(options){
+	var Operation = function(options){
 		var inputs = [];
 		for( var key in options){
 			this[key] = options[key];
