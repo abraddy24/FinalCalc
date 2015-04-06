@@ -16,10 +16,13 @@ require.config({
 });
 
 // All other modules should be called through here
-require(["jquery", "test"],
-function($, mixin, structures) {
-   // mixin
+require(["jquery", "model", "controller"],
+function($, Model, Controller) {
+   var model, controller;
    $(function() {
       console.log("Page loaded!");
+
+      model = new Model();
+      controller = new Controller("main", model);
    });
 });
