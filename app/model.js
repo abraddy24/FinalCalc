@@ -1,6 +1,11 @@
 // Model for the calculator which will contain our buttons and what they do
 
 define(function(){
+	function Model() {
+		this.Calculator = Calculator;
+		this.events = {};
+	}
+	
 	var Calculator = function() {
 		var operationCalc, Operation, InputStk;
 		operationCalc = {
