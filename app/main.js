@@ -8,7 +8,9 @@ require.config({
    // This way one can call on jquery and libs directly
    paths: {
       "lib": "../lib",
-      "jquery": "../lib/jquery-2.1.3"
+      "jquery": "../lib/jquery-2.1.3",
+      "model": "model",
+      "controller": "controller"
       // or the following to load remotely:
       // "jquery": "https://code.jquery.com/jquery-2.1.3.min"
    },
