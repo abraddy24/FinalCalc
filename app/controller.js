@@ -1,7 +1,8 @@
 // controller for the calcualtor that will help with the model and the view
 define([ "jquery", "model" ],
-	
+
 	function($, model){
+	var model = document.getElementById("Model");
 
 	function Controller(main, model){
 		console.log("made it into controller.js");
@@ -11,17 +12,27 @@ define([ "jquery", "model" ],
 				getInput, toggleMemInd;
 			i = 0;
 			m = 0;
+			//calculator as a whole
 			$calculator = $("#calculator");
+			//input-output field in calculator
 			$ioField = $("<div/>", { "class": "io-field" }).appendTo($calculator);
+			//calclulation that is to be processed
 			$calculation = $("<div/>", { "class": "calculation" }).appendTo($ioField);
+			//processed calculation in terms of precedence
 			$collapsedCalculation = $("<div/>", { "class": "collapsed-calculation" }).appendTo($ioField);
+			//user input for calculation
 			$input = $("<div/>", { "class": "input", text: 0 }).appendTo($ioField);
+			//gets keyboard input
 			$keyboardInput = $("<input/>").appendTo($calculator).focus().css(
 				{ opacity: 0, position: "absolute", top: 0 });
+			//gets number representation for buttons
 			$numbers = $("<div/>", { "class": "numbers" }).appendTo($calculator);
+			//gets operation buttons
 			$operations = $("<div/>", { "class": "operations" }).appendTo($calculator);
+			//gets memmory indicator for recall of previous calculations
 			$memoryIndicator = $("<div/>", { text: "M", "class": "memory-indicator" }).appendTo($ioField).hide();
 
+			//gets on click listeners
 			$.fn.addBtn = function(html, className, onclick){
 				$("<div/>", {
 				html: html,
@@ -31,6 +42,7 @@ define([ "jquery", "model" ],
 				return this;
 			};
 
+			//adds number buttons to calculator
 			addNumBtn = function(number) {
 				$numbers.addBtn(number, "number" + (number === "." ? "dot" : "number-" + number), function(){
 					if ($input.text().match(/\./) && number === "."){
@@ -44,8 +56,9 @@ define([ "jquery", "model" ],
 				});
 			};
 
+			//adds operation buttons to calculator
 			addOppBtn = function(opp, click){
-				$opp.addBtn(opp.buttonHTML, "operation" + opp.name, function(e){
+				$operations.addBtn(opp.buttonHTML, "operation" + opp.name, function(e){
 					click.call(this,e);
 					$calculation.text(InputStk.getCalculationString());
 					$collapsedCalculation.text(InputStk.getCalculationString(true));
@@ -54,19 +67,23 @@ define([ "jquery", "model" ],
 				});
 			};
 
+			//gets input from ioField
 			getInput = function() {
 				var input = $input.text();
 				return input.match(/error/i) ? 0 : parseFloat($input.text());
 			};
 
+			//toggles the display to show memory is being accessed
 			toggleMemInd = function () {
 				$memoryIndication[ m ? "show" : "hide" ]();
 			};
 
+			//checks for keyboard inputs
 			$calculator.click(function(){
 				$keyboardInput.focus();
 			});
 
+			//evaluates keyboard inputs
 			$(window).keydown(function(e){
 				setTimeout(function(){
 					var val = $keyboardInput.val();
@@ -86,7 +103,7 @@ define([ "jquery", "model" ],
 					}
 				}, 0);
 			});
-
+			//creates buttons
 			$numbers.addBtn("&larr;", "del", function (){
 				$input.text($input.text().replace(/.$/, ""));
 				$input.text().length || $input.text("0");
@@ -129,9 +146,9 @@ define([ "jquery", "model" ],
 				InputStk.closeContxt(getInput());
 			});
 
-
+			//checks to see if buttons are created in HTML objects
 			(function(){
-				for (i in operationCalc){
+				for (i in model.operationCalc){
 					(function(i){
 						if (!operationCalc[ i ].buttonHTML){
 							return;
@@ -143,8 +160,8 @@ define([ "jquery", "model" ],
 				}
 			}());
 			addOppBtn({ buttonHTML: "=", name: "evaluate" }, function(){
-				InputStk.evaluate(getInput());
-			})();	
+				model.InputStk.evaluate(getInput());
+			}());	
 	}
 	return Controller;
 });
