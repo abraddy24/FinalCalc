@@ -2,7 +2,7 @@
 
 define(function(){
 	//Calculator is the variable that is the model
-	function Calculator() {
+	var Calculator = function() {
 		console.log("made it inside Model.js");
 		var operationCalc, Operation, InputStk;
 		//operationCalc contains all the operations that the calculator does
