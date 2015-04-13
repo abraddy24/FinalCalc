@@ -2,6 +2,7 @@
  * calculator test
  *
  * Test file for model.js
+ * Test file for your collection class
  */
 var expect, Calculator;
 

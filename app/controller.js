@@ -4,7 +4,7 @@ define([ "jquery", "model", "view" ],
 	function($, model, view){
 	//var InputSactk;
 	//console.log(model.InputStk);
-	//InputStack = model.InputStk();
+	
 	//console.log(InputStack);
 
 	function Controller(view, model){

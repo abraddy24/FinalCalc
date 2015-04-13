@@ -311,6 +311,6 @@ define(function(){
 				}
 			};
 		}();
+		return Calculator;
 	};
-	return Calculator;
 });

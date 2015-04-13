@@ -1,7 +1,12 @@
+define(["jquery", "model", "controller"],
+	function($, model, controller){
 		(function View(model, controller){
+			console.log("made it iside View.js");
+			
 			var i, m, $calculator, $ioField, $calculation, $collapsedCalculation, $input,
 				$keyboardInput, $numbers, $operations, $memoryIndicator, addNumBtn, addOppBtn,
-				getInput, toggleMemInd;
+				getInput, toggleMemInd, InputStack;
+			InputStack = model.InputStk;
 			i = 0;
 			m = 0;
 			//calculator as a whole
@@ -52,9 +57,9 @@
 			addOppBtn = function(opp, click){
 				$operations.addBtn(opp.buttonHTML, "operation" + opp.name, function(e){
 					click.call(this,e);
-					$calculation.text(InputSactk.getCalculationString());
-					$collapsedCalculation.text(InputSactk.getCalculationString(true));
-					$input.text(InputSactk.getPartl());
+					$calculation.text(InputStack.getCalculationString());
+					$collapsedCalculation.text(InputStack.getCalculationString(true));
+					$input.text(InputStack.getPartl());
 					$input.data({ clearOnInput: true });
 				});
 			};
@@ -138,3 +143,5 @@
 				InputStack.evaluate(getInput());
 			}());
 	}());
+	return View;
+})

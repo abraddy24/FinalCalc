@@ -10,7 +10,8 @@ require.config({
       "lib": "../lib",
       "jquery": "../lib/jquery-2.1.3",
       "model": "model",
-      "controller": "controller"
+      "controller": "controller",
+      "view": "view"
       // or the following to load remotely:
       // "jquery": "https://code.jquery.com/jquery-2.1.3.min"
    },
@@ -18,14 +19,13 @@ require.config({
 });
 
 // All other modules should be called through here
-require(["jquery", "model", "controller"],
+require(["jquery", "model", "controller", "view"],
 function($, Model, Controller,view) {
    var model, controller, view;
    $(function() {
       console.log("Page loaded!");
-
       model = new Model();
       controller = new Controller(view, model);
-      view = new View(model,controller);
+      view = new View(model, controller);
    });
 });
